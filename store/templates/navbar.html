@@ -42,19 +42,19 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Todos os produtos</a></li>
+                        <li><a class="dropdown-item" href="{%url 'home' %}">Todos os produtos</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#">Programação</a></li>
-                        <li><a class="dropdown-item" href="#">Marketing</a></li>
+                        <li><a class="dropdown-item" href="{%url 'category' 'Livros-de-programacao'  %}">Programação</a></li>
+                        <li><a class="dropdown-item" href="{%url 'category' 'Livros-de-marketing' %}">Marketing</a></li>
                     </ul>
                 </li>
             </ul>
             <form class="d-flex">
-                <a href="#" class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i>
+                <a href="{%url 'cart_summary'%}" class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i>
                     Carrinho
-                    <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}
+                    <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">0
                     </span></a>
             </form>
         </div>
