@@ -4,11 +4,20 @@ from django.contrib import messages
 from . import models
 from . import forms
 
+
+def category(request, foo):
+    foo = foo.replace("-", " ")
+    try:
+        category = models.Category.objects.get(name=foo)
+        products = models.Product.objects.filter(category=category)
+        return render(request, "category.html", {"products": products, "category": category})
+    except:
+        messages.success(request, ("Essa categoria não existe")) 
+        return redirect("home")
+
 def product(request, pk):
     product = models.Product.objects.get(id=pk)
     return render(request, 'product.html', {'product': product})
-
-
 
 def home(request):
     products = models.Product.objects.all()
