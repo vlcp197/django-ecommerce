@@ -23,5 +23,6 @@ def cart_add(request):
 
 def cart_delete(request):
     pass
+
 def cart_update(request):
-    pass
+    cart = Cart(request)
