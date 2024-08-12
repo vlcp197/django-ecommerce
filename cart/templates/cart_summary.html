@@ -78,7 +78,6 @@
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     {% endif %}
 </div>
-{% endblock 'content' %}
 
 <script>
     $(document).on("click", ".update-cart", function(e){
@@ -90,7 +89,7 @@
             url: '{% url "cart_update" %}',
             data: {
                 product_id: $(this).data('index'),
-                product_qty: $('#select' + productid + 'option:selected' ).text(),
+                product_qty: $('#select' + productid + ' option:selected').text(),
                 csrfmiddlewaretoken:'{{ csrf_token }}',
                 action: "post"
             },
@@ -104,3 +103,4 @@
         });
     })
 </script>
+{% endblock 'content' %}
