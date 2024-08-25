@@ -10,39 +10,18 @@
                 </li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Busca</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about'%}">Sobre</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Perfil do usuário</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="#">Informação do usuário</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Pedidos</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Pedidos Vendidos</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="#">Pedidos não vendidos</a></li>
-                    </ul>
-                </li>
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{%url 'logout'%}">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{%url 'update_user'%}">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{%url 'logout'%}">Logout</a></li>
                 {% else %}
-                <li class="nav-item"><a class="nav-link" href="{%url 'login'%}">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{%url 'register'%}">Registre-se</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{%url 'login'%}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{%url 'register'%}">Registre-se</a></li>
                 {% endif %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{%url 'home' %}">Todos os produtos</a></li>
+                        <li><a class="dropdown-item" href="{%url 'category_summary' %}">Todos os produtos</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
