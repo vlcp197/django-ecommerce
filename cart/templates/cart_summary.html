@@ -36,12 +36,12 @@
 
                         <!-- Product price-->
                         <strike>
-                            ${{ product.price }}
+                            R${{ product.price }}
                         </strike>
                         &nbsp;
-                        ${{ product.sale_price }}
+                        R${{ product.sale_price }}
                         {% else %}
-                        ${{ product.price }}
+                        R${{ product.price }}
                         {% endif %}
                         <br /><br />
                         <div class="row justify-content-center">
@@ -70,10 +70,10 @@
         </div>
     </div>
     {% endfor %}
-    <div align="right">
-        <h3>Total: ${{ totals }}</h3>
+    <div align="left">
+        <h3>Total: R${{ totals }}</h3>
+        <br /><br /><br />
     </div>
-    <br /><br /><br />
     {% else %}
     Seu carrinho está vazio...
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
