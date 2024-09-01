@@ -5,6 +5,22 @@ from django.contrib import messages
 from . import models
 from . import forms
 
+def update_info(request):
+    if request.user.is_authenticated:
+        current_user =  models.Profile.objects.get(user__id=request.user.id)
+        form = forms.UserInfoForm(request.POST or None, instance = current_user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Suas informações foram atualizadas")
+
+            return redirect('home')
+        return render(request, 'update_info.html', {'form':form})
+    else:
+        messages.success(request, "Você precisa estar logado para acessar esta página")
+        return redirect('home')
+
+
 def update_user(request):
     if request.user.is_authenticated:
         current_user =  User.objects.get(id=request.user.id)
@@ -79,9 +95,9 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, ("Bem vindo. Você se registrou com sucesso"))
-            return redirect("home")
+            messages.success(request, ("Usuário criado, por favor preencha suas informações de usuário abaixo"))
+            return redirect("update_info")
         else:
             messages.success(request, ("Houve um problema com o registro. Por favor, tente novamente"))
-            return redirect("home")
+            return redirect("register")
     return render(request, 'register.html', {'form':form })
