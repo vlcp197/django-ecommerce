@@ -5,6 +5,18 @@ from django.contrib import messages
 from . import models
 from . import forms
 
+def search(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        searched = models.Product.objects.filter(name__icontains=searched)
+        if not searched:
+            messages.success(request, "Este produto não existe... Por favor, pesquise novamente")
+            return render(request, 'search.html', {})
+        else:
+            return render(request, 'search.html', {'searched': searched})
+    else:
+        return render(request, 'search.html', {})
+
 def update_info(request):
     if request.user.is_authenticated:
         current_user =  models.Profile.objects.get(user__id=request.user.id)
