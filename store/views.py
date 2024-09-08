@@ -4,11 +4,14 @@ from django.contrib.auth.models import User
 from django.contrib import messages 
 from . import models
 from . import forms
+from django.db.models import Q
+import json
+from cart.cart import Cart
 
 def search(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        searched = models.Product.objects.filter(name__icontains=searched)
+        searched = models.Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
         if not searched:
             messages.success(request, "Este produto não existe... Por favor, pesquise novamente")
             return render(request, 'search.html', {})
@@ -81,16 +84,26 @@ def login_user(request):
         username = request.POST["username"]
         password = request.POST["password"]
         user=authenticate(request, username=username, password=password)
-
         if user is not None:
             login(request, user)
+
+            current_user = models.Profile.objects.get(user__id=request.user.id)
+
+            saved_cart = current_user.old_cart
+
+            if saved_cart:
+                converted_cart = json.loads(saved_cart)
+                cart = Cart(request)
+                for key, value in converted_cart.items():
+                    cart.db_add(product=key, quantity=value)
+
             messages.success(request, ("Você logou com sucesso"))
             return redirect('home')
         else:
             messages.success(request, ("Ocorreu um erro, tente novamente"))
             return redirect('home')
     else:
-        return render(request, 'login.html',)
+        return render(request, 'login.html',{})
 
 def logout_user(request):
     logout(request)
