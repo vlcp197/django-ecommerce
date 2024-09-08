@@ -9,11 +9,11 @@
         </div>
     </div>
 </header>
+
 <div class="container">
     <div class="row">
         <center>
             <div class="col-10">
-
                 <br><br>
                 <div class="card">
                     <div class="card-header">
@@ -29,15 +29,21 @@
                         </form>
                     </div>
                 </div>
-                <br><br>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    {% if searched %}
-                        {% for product in searched %}
-                            {% if product.is_sale %}
-                            <div class="col mb-5">
-                                <div class="card h-100">
-                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promoção</div>
-                            {% endif %}
+            </div>
+        </center>
+    </div>
+</div>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% if searched %}
+            {% for product in searched %}
+            <div class="col mb-5">
+                <div class="card h-100">
+                    {% if product.is_sale %}
+                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promoção
+                    </div>
+                    {% endif %}
                     <!-- Product image-->
                     <img class="card-img-top" src="https://picsum.photos/200" alt="..." />
                     <!-- Product details-->
@@ -69,19 +75,15 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center">
-                            <a class="btn btn-outline-dark mt-auto" href="{%url 'product' product.id %}">Ver Produto</a>
-                        </div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{%url 'product' product.id %}">Ver Produto</a></div>
                     </div>
                 </div>
-                {% endfor %}
-                {% endif %}
             </div>
+            {% endfor %}
+            {% endif %}
+        </div>
     </div>
-    </center>
-</div>
-</div>
-</div>
+</section>
 <br><br><br><br><br><br>
 
 {% endblock 'content' %}
