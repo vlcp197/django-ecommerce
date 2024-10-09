@@ -70,10 +70,11 @@
         </div>
     </div>
     {% endfor %}
-    <div align="left">
+    <div align="right">
         <h3>Total: R${{ totals }}</h3>
-        <br /><br /><br />
+        <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
     </div>
+    <br /><br /><br />
     {% else %}
     Seu carrinho está vazio...
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
