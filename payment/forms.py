@@ -15,3 +15,15 @@ class ShippingForm(forms.ModelForm):
 		model = ShippingAddress
 		fields = ['shipping_full_name', 'shipping_email', 'shipping_address1', 'shipping_address2', 'shipping_city', 'shipping_state', 'shipping_zipcode', 'shipping_country']
 		exclude = ['user',]
+
+class PaymentForm(forms.Form):
+	card_name = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Nome no cartão'}), required=True) 
+	card_number =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Número do cartão'}), required=True)
+	card_exp_date =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Data de vencimento'}), required=True)
+	card_cvv_number =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'número CVV'}), required=True)
+	card_address1 =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Endereço de cobrança 1'}), required=True)
+	card_address2 =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Endereço de cobrança 2'}), required=False)
+	card_city =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Cidade de cobrança'}), required=True)
+	card_state =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Estado de cobrança'}), required=True)
+	card_zipcode =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'CEP de cobrança'}), required=True)
+	card_country =  forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'País de cobrança'}), required=True)
