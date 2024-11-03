@@ -23,6 +23,20 @@
                         <li><a class="dropdown-item" href="{%url 'update_info'  %}">Informação do usuário</a></li>
                     </ul>
                 </li>
+                
+                {% if user.is_superuser %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">Pedidos</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{%url 'shipped_dash' %}">Pedidos enviados</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="{%url 'not_shipped_dash'  %}">Pedidos não enviados</a></li>
+                    </ul>
+                </li>
+                {% endif %}
 
                     <li class="nav-item"><a class="nav-link" href="{%url 'logout'%}">Logout</a></li>
                 {% else %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+
+<div class="container">
+    <div class="row">
+        <center>
+            <div class="col-8"></div>
+            <h3>Itens não enviados</h3>
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Email do cliente</th>
+                    <th scope="col">Data do pedido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in orders %}
+                  <tr>
+                    <td><a href="{% url 'orders' item.id %}">{{item.id}}</a></td>
+                    <td>${{item.amount_paid}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.date_ordered}}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+        </center>
+    </div>
+</div>
+
+{% endblock 'content' %}
