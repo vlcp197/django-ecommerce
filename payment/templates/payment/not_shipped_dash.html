@@ -12,7 +12,8 @@
                     <th scope="col">Pedido</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Email do cliente</th>
-                    <th scope="col">Data do pedido</th>
+                    <th scope="col">Data do envio</th>
+                    <th scope="col">Enviado</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -22,6 +23,14 @@
                     <td>${{item.amount_paid}}</td>
                     <td>{{item.email}}</td>
                     <td>{{item.date_ordered}}</td>
+                    <td>
+                      <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="shipping_status" value="true">
+                        <input type="hidden" name="num" value="{{item.id}}">
+                        <button type="submit" class="btn btn-success btn-sm">Marcar enviado</button>
+                      </form>
+                    </td>
                   </tr>
                 {% endfor %}
                 </tbody>
