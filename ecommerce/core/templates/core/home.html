@@ -1,4 +1,70 @@
 {% extends "core/base.html" %} {%block content %}
-<h1>Home</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam consequatur sequi, incidunt, distinctio qui ratione maiores aspernatur libero est ad dolor, quae omnis magni totam quas enim minima cupiditate mollitia?</p>
+<div class="container" style="max-width: 900px">
+  <div class="container">
+    <header class="d-flex flex-wrap py-3 mb-4 border-bottom">
+      <a
+        href="/"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+      >
+        <span class="fs-4">Padilha Perfumes</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </header>
+  </div>
+
+  <div class="container d-flex justify-content-center align-items-center">
+    {%for i in "123"%}
+    <div class="d-flex flex-column">
+      <div class="card-group mb-3 gap-4">
+        {% for i in "123" %}
+        <div class="card" style="max-width: 18rem">
+          <div>
+            <img
+              src="https://picsum.photos/200"
+              class="img-fluid w-100 h-100"
+              style="object-fit: cover"
+              alt=""
+            />
+          </div>
+
+          <div class="card-body overflow-auto">
+            <h5 class="card-title">Card Title</h5>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
+              voluptate laudantium, culpa libero praesentium cum molestiae
+              deleniti maxime dignissimos reiciendis sapiente id, quod optio quo
+              distinctio eos at eveniet natus!
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+
+  <div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">About</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">© 2025 Padilha Perfumes</p>
+    </footer>
+  </div>
+</div>
 {%endblock%}
