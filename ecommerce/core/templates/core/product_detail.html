@@ -1,0 +1,36 @@
+{% extends "core/base.html" %} {%block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <img src="https://picsum.photos/350/250" alt="Product" class="img-fluid rounded mb-3 product-image" id="mainImage">
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="mb-3">Perfume {{product_id}}</h2>
+
+            <div class="mb-3">
+                <span class="h4 ne-2">R$50.00</span>
+            </div>
+            <div class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex quo ea sequi, dolores eveniet vel nemo, exercitationem illum totam nesciunt non magni pariatur fugiat qui veritatis adipisci, aspernatur amet. Ipsa?
+            </div>
+            <div class="mb-4">
+                <label for="quantity" class="form-label">Quantidade:</label>
+                <input type="number" value="1" min="1" class="form-control" id="quantity" style="width: 80px">
+            </div>
+            <button class="btn btn-primary btn-lg mb-3 me-2">
+                <i class="bi bi-cart-plus"> Adicionar ao carrinho</i>
+            </button>
+            <div class="mt-4">
+                <h5>Características</h5>
+                <ul>
+                    <li>Amadeirado</li>
+                    <li>Doce</li>
+                    <li>Cítrico</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{%endblock%}
