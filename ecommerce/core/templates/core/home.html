@@ -10,30 +10,25 @@
 <div class="container">
   
   <div class="row row-cols-3 g-3">
-  {%for i in "12345"%}
+  {%for product in products%}
     <div class="col">
 
       <div class="card" style="max-width: 18rem">
-        <div>
-          <a href="produto/{{i}}">
+        <div style="max-width: 18rem; max-height: 10rem">
+          <a href="{% url 'product-detail' product.id %}">
             <img
-            src="https://picsum.photos/200"
+            src="{{product.image.url}}"
             class="img-fluid w-100 h-100"
-            style="object-fit: cover"
+            style="object-fit: cover; border-radius: 5px;"
             alt=""
             />
           </a>
         </div>
 
         <div class="card-body overflow-auto">
-          <h5 class="card-title">Card Title</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-            voluptate laudantium, culpa libero praesentium cum molestiae
-            deleniti maxime dignissimos reiciendis sapiente id, quod optio quo
-            distinctio eos at eveniet natus!
-          </p>
-          <a href="produto/{{i}}" class="btn btn-primary">Comprar</a>
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{product.description|truncatechars:50 }}</p>
+          <a href="{% url 'product-detail' product.id %}"class="btn btn-primary">Comprar</a>
         </div>
       </div>
     </div>
