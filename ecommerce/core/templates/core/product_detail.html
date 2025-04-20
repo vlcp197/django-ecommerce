@@ -16,9 +16,9 @@
             </div>
             <div class="mb-4">
                 <label for="quantity" class="form-label">Quantidade:</label>
-                <input type="number" value="1" min="1" class="form-control" id="quantity" style="width: 80px">
+                <input id="qtd-input" type="number" value="1" min="1" class="form-control" id="quantity" style="width: 80px">
             </div>
-            <button class="btn btn-primary btn-lg mb-3 me-2">
+            <button class="btn btn-primary btn-lg mb-3 me-2" onClick="addToCart({{product.id}})">
                 <i class="bi bi-cart-plus"> Adicionar ao carrinho</i>
             </button>
             <div class="mt-4">

@@ -3,9 +3,10 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+app_name='cart'
 
 urlpatterns = [
-    path('', views.home),
-    path('produto/<int:product_id>/', views.product_detail, name="product-detail"),
+    path('', views.cart, name='carrinho'),
+
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,7 @@
+import random
 from django.shortcuts import render
 from .models import Product
+import string
 
 def home(request):
     products = Product.objects.all()
@@ -10,5 +12,3 @@ def product_detail(request, product_id):
     product = Product.objects.get(id=product_id)
     return render(request, 'core/product_detail.html', {"product": product})
 
-def cart(request):
-    return render(request, 'core/cart.html')
