@@ -1,30 +1,36 @@
-{% extends "core/base.html" %} 
-
-
-{%block content %}
-
+{% extends "core/base.html" %} {%block content %}
 
 <section class="jumbotron text-center">
+
+{% for message in messages %}
+  <div class="alert alert-dismissible {{ message.tags }}" role="alert">
+    <div>{{ message | safe }}</div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+
   <div class="container">
     <h1 class="jumbotron-heading">Catálogo</h1>
-    <p class="lead text-muted py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga voluptates ea explicabo! Debitis, sapiente illo quia, alias consequuntur at asperiores inventore architecto, ratione ad ducimus veniam! Odit reprehenderit quis atque.</p>
-
+    <p class="lead text-muted py-4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga voluptates
+      ea explicabo! Debitis, sapiente illo quia, alias consequuntur at
+      asperiores inventore architecto, ratione ad ducimus veniam! Odit
+      reprehenderit quis atque.
+    </p>
   </div>
 </section>
 <div class="container">
-  
   <div class="row row-cols-3 g-3">
-  {%for product in products %}
+    {%for product in products %}
     <div class="col">
-
       <div class="card" style="max-width: 18rem">
         <div style="max-width: 18rem; max-height: 10rem">
           <a href="{% url 'product-detail' product.slug %}">
             <img
-            src="{{product.image.url}}"
-            class="img-fluid w-100 h-100"
-            style="object-fit: cover; border-radius: 5px;"
-            alt=""
+              src="{{product.image.url}}"
+              class="img-fluid w-100 h-100"
+              style="object-fit: cover; border-radius: 5px"
+              alt=""
             />
           </a>
         </div>
@@ -32,12 +38,16 @@
         <div class="card-body overflow-auto">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">{{product.description|truncatechars:50 }}</p>
-          <a href="{% url 'product-detail' product.slug %}"class="btn btn-primary">Comprar</a>
+          <a
+            href="{% url 'product-detail' product.slug %}"
+            class="btn btn-primary"
+            >Comprar</a
+          >
         </div>
       </div>
     </div>
 
-      {%endfor%}
-    </div>
+    {%endfor%}
+  </div>
 </div>
 {%endblock%}

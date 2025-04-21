@@ -44,7 +44,7 @@ def add_to_cart(request, slug):
     else:
         cart[slug] = {
             'quantity': quantity,
-            'preco_unitario': float(product.price)
+            'price': float(product.price)
         }
     
     request.session['cart'] = cart

@@ -10,8 +10,11 @@ def home(request):
 def product_detail(request, slug):
 
     product = get_object_or_404(Product, slug=slug)
-
-    quantity = request.session.get('cart')[slug]["quantity"]
+   
+    try:
+       quantity = request.session.get('cart')[slug]["quantity"]
+    except (TypeError, KeyError):
+        quantity = 1
 
     return render(request, 'core/product_detail.html', {"product": product, "quantity": quantity })
 
