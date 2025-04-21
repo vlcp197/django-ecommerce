@@ -37,11 +37,13 @@ def add_to_cart(request, slug):
     product = get_object_or_404(Product, slug=slug)
     cart = request.session.get('cart', {})
 
+    quantity = int(request.POST.get('quantity', 1))
+
     if slug in cart:
-        cart[slug]["quantity"] += 1
+        cart[slug]["quantity"] = quantity
     else:
         cart[slug] = {
-            'quantity': 1,
+            'quantity': quantity,
             'preco_unitario': float(product.price)
         }
     
@@ -63,8 +65,6 @@ def remove_from_cart(request, slug):
 def update_cart(request, slug):
     if request.method == 'POST':
         quantity = int(request.POST.get('quantity', 1))
-        product = get_object_or_404(Product, slug=slug)
-
         cart = request.session.get('cart', {})
 
         if quantity > 0:
@@ -72,6 +72,9 @@ def update_cart(request, slug):
             request.session['cart'] = cart
         else:
             return remove_from_cart(request, slug)
+
+    return redirect('cart:cart')
+
 
 def checkout_view(request):
     cart = request.session.get('cart', {})

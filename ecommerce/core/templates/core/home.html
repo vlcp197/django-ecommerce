@@ -19,7 +19,7 @@
 
       <div class="card" style="max-width: 18rem">
         <div style="max-width: 18rem; max-height: 10rem">
-          <a href="{% url 'product-detail' product.id %}">
+          <a href="{% url 'product-detail' product.slug %}">
             <img
             src="{{product.image.url}}"
             class="img-fluid w-100 h-100"
@@ -32,7 +32,7 @@
         <div class="card-body overflow-auto">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">{{product.description|truncatechars:50 }}</p>
-          <a href="{% url 'product-detail' product.id %}"class="btn btn-primary">Comprar</a>
+          <a href="{% url 'product-detail' product.slug %}"class="btn btn-primary">Comprar</a>
         </div>
       </div>
     </div>
