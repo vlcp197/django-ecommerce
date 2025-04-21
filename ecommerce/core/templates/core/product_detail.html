@@ -18,9 +18,13 @@
                 <label for="quantity" class="form-label">Quantidade:</label>
                 <input id="qtd-input" type="number" value="1" min="1" class="form-control" id="quantity" style="width: 80px">
             </div>
-            <button class="btn btn-primary btn-lg mb-3 me-2" onClick="addToCart({{product.id}})">
-                <i class="bi bi-cart-plus"> Adicionar ao carrinho</i>
-            </button>
+            <form action="{% url 'cart:add_to_cart' product.slug %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-lg mb-3 me-2" >
+                    <i class="bi bi-cart-plus"> Adicionar ao carrinho</i>
+                </button>
+            </form>
+
             <div class="mt-4">
                 <h5>Características</h5>
                 <ul>

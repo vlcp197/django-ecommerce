@@ -5,7 +5,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.home),
+    path('', views.home, name="home"),
     path('produto/<int:product_id>/', views.product_detail, name="product-detail"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
