@@ -55,9 +55,9 @@ def remove_from_cart(request, slug):
     if slug in cart:
         del cart[slug]
         request.session["cart"] = cart 
-        messages.success(request, "Item removido do carrinho")
+        messages.warning(request, "Item removido do carrinho")
 
-    return redirect('cart')
+    return redirect('cart:cart')
 
 
 def update_cart(request, slug):

@@ -25,9 +25,12 @@
                         </div>
                         <div class="col-md-2 text-end">
                             <p class="fw-bold">R${{item.subtotal}}</p>
-                            <button class="btn btn-sm btn-outline-danger">
-                                <i class="bi bi-trash"></i>
-                            </button>
+                            <form action="{% url 'cart:remove_from_cart' item.product.slug %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <hr>
