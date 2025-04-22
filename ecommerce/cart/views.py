@@ -55,9 +55,11 @@ def remove_from_cart(request, slug):
     cart = request.session.get('cart', {})
 
     if slug in cart:
+        product = get_object_or_404(Product, slug=slug)
+
         del cart[slug]
         request.session["cart"] = cart 
-        messages.warning(request, "Item removido do carrinho")
+        messages.error(request, f"{product.name} removido do carrinho")
 
     return redirect('cart:cart')
 

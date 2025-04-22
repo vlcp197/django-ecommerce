@@ -1,4 +1,6 @@
-{% extends "core/base.html" %} {%block content %}
+{% extends "core/base.html" %} 
+{%load static%}
+{%block content %}
 
 <section class="jumbotron text-center">
 
@@ -20,9 +22,11 @@
   </div>
 </section>
 <div class="container">
+  <hr>
   <div class="row row-cols-3 g-3">
     {%for product in products %}
     <div class="col">
+
       <div class="card" style="max-width: 18rem">
         <div style="max-width: 18rem; max-height: 10rem">
           <a href="{% url 'product-detail' product.slug %}">
@@ -45,8 +49,8 @@
           >
         </div>
       </div>
+      
     </div>
-
     {%endfor%}
   </div>
 </div>
