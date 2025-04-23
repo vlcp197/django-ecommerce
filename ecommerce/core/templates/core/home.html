@@ -1,20 +1,22 @@
-{% extends "core/base.html" %} 
-{%load static%}
-{%block content %}
+{% extends "core/base.html" %} {%load static%} {%block content %}
 
 <section class="jumbotron text-center">
-
-{% for message in messages %}
+  {% for message in messages %}
   <div class="alert alert-dismissible {{ message.tags }}" role="alert">
     <div>{{ message | safe }}</div>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
   </div>
-{% endfor %}
+  {% endfor %}
 
   <div class="container">
     <h1 class="jumbotron-heading">Catálogo</h1>
     <p class="lead text-muted py-4">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga voluptates
+      ipsum dolor sit amet consectetur adipisicing elit. Fuga voluptates
       ea explicabo! Debitis, sapiente illo quia, alias consequuntur at
       asperiores inventore architecto, ratione ad ducimus veniam! Odit
       reprehenderit quis atque.
@@ -22,30 +24,32 @@
   </div>
 </section>
 <div class="container">
-  <hr>
+  <hr />
   <div class="row row-cols-3 g-3">
     {%for product in products %}
-    <div class="col">
-
-      <div class="card" style="max-width: 18rem">
-        <div style="max-width: 18rem; max-height: 10rem">
-          <a href="{% url 'product-detail' product.slug %}">
-            <img
-              src="{{product.image.url}}"
-              class="img-fluid w-100 h-100"
-              style="object-fit: cover; border-radius: 5px"
-              alt=""
-            />
-          </a>
-        </div>
-        
-        <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">{{product.description }}</p>
-          <a href="{% url 'product-detail' product.slug %}" class="btn btn-primary">Comprar</a>
+    <div class="card" style="max-width: 320px">
+      <a href="{% url 'product-detail' product.slug %}">
+        <img
+        src="{{ product.image.url}}"
+        class="card-img-top"
+        alt="Product Image"
+        style="object-fit: contain; max-height: 272px"
+        ></img>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description|truncatewords:30 }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="h5 mb-0">R${{product.price}}</span>
         </div>
       </div>
-      
+      <div class="card-footer d-flex justify-content-end bg-light">
+        <a
+          href="{% url 'product-detail' product.slug %}"
+          class="btn btn-primary"
+          >Ver Produto
+        </a>
+      </div>
     </div>
     {%endfor%}
   </div>
