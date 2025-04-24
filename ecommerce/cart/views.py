@@ -106,7 +106,7 @@ def checkout_view(request):
 
         return redirect('order_success', code=order.code)
 
-    return render(request, 'cart/checkout.html', {total: total})
+    return render(request, 'cart/checkout.html', {"total": total})
 
 
 def order_success(request, code):
